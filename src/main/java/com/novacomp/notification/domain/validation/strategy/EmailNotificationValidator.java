@@ -3,7 +3,9 @@ package com.novacomp.notification.domain.validation.strategy;
 import com.novacomp.notification.domain.model.Notification;
 import com.novacomp.notification.domain.validation.NotificationValidator;
 
+import static com.novacomp.notification.infrastructure.utils.Constants.AT_SIGN;
 import static com.novacomp.notification.infrastructure.utils.Constants.INVALID_EMAIL;
+
 
 public class EmailNotificationValidator implements NotificationValidator {
     @Override
@@ -11,7 +13,7 @@ public class EmailNotificationValidator implements NotificationValidator {
 
         String recipient = notification.getRecipient();
 
-        if (!recipient.contains("@")) {
+        if (!recipient.contains(AT_SIGN)) {
             throw new IllegalArgumentException(
                     INVALID_EMAIL + recipient
             );

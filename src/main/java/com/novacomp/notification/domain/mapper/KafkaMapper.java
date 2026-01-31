@@ -1,12 +1,10 @@
 package com.novacomp.notification.domain.mapper;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.novacomp.notification.domain.model.Event;
 import com.novacomp.notification.domain.model.Notification;
 import com.novacomp.notification.infrastructure.config.JsonMapper;
-
-import static com.novacomp.notification.infrastructure.utils.Constants.FAILED_TO_SERIALIZE;
+import static com.novacomp.notification.infrastructure.utils.Constants.LOG_FAILED_TO_SERIALIZE;
 
 public class KafkaMapper {
 
@@ -29,7 +27,7 @@ public class KafkaMapper {
             return JsonMapper.instance().writeValueAsString(notification);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(
-                    FAILED_TO_SERIALIZE, e
+                    LOG_FAILED_TO_SERIALIZE, e
             );
         }
     }

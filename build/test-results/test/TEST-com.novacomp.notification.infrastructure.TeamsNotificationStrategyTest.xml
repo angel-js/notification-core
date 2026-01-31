@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.novacomp.notification.infrastructure.TeamsNotificationStrategyTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-01-31T13:49:54" hostname="ANGEL" time="0.011">
+  <properties/>
+  <testcase name="shouldFailWhenCreatedAtIsNull()" classname="com.novacomp.notification.infrastructure.TeamsNotificationStrategyTest" time="0.003"/>
+  <testcase name="shouldSendTeamsNotificationWhenValid()" classname="com.novacomp.notification.infrastructure.TeamsNotificationStrategyTest" time="0.003"/>
+  <testcase name="shouldFailWhenRecipientIsMissing()" classname="com.novacomp.notification.infrastructure.TeamsNotificationStrategyTest" time="0.002"/>
+  <system-out><![CDATA[10:49:54.707 [Test worker] ERROR com.novacomp.notification.domain.validation.CommonNotificationValidator -- createdAt is required
+10:49:54.724 [Test worker] INFO com.novacomp.notification.infrastructure.adapter.out.strategy.TeamsNotificationStrategy -- [TEAMS] conversation=null message=Hello Teams
+10:49:54.728 [Test worker] ERROR com.novacomp.notification.domain.validation.CommonNotificationValidator -- Recipient is required
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

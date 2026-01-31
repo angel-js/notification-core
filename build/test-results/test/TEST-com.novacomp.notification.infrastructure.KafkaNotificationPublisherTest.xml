@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.novacomp.notification.infrastructure.KafkaNotificationPublisherTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-01-31T13:49:54" hostname="ANGEL" time="0.192">
+  <properties/>
+  <testcase name="shouldPublishKafkaEventWhenNotificationIsValid()" classname="com.novacomp.notification.infrastructure.KafkaNotificationPublisherTest" time="0.192"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

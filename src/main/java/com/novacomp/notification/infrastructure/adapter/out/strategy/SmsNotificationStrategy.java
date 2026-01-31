@@ -1,42 +1,47 @@
 package com.novacomp.notification.infrastructure.adapter.out.strategy;
 
-import com.novacomp.notification.application.port.out.NotificationStrategy;
 import com.novacomp.notification.domain.model.Notification;
 import com.novacomp.notification.domain.validation.AbstractNotificationStrategy;
 import com.novacomp.notification.domain.validation.CommonNotificationValidator;
 import com.novacomp.notification.domain.validation.CompositeNotificationValidator;
-import com.novacomp.notification.domain.validation.strategy.SlackNotificationValidator;
 import com.novacomp.notification.domain.validation.strategy.SmsNotificationValidator;
-import com.novacomp.notification.infrastructure.adapter.out.KafkaNotification;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
+import java.util.Map;
+
+import static com.novacomp.notification.domain.model.NotificationMetadata.MESSAGE;
+import static com.novacomp.notification.domain.model.NotificationMetadata.SMS_PHONE;
+import static com.novacomp.notification.domain.model.ProviderMetadata.*;
 
 @Slf4j
 public class SmsNotificationStrategy  extends AbstractNotificationStrategy {
-    private final KafkaNotification kafkaNotification;
 
-    public SmsNotificationStrategy(KafkaNotification kafkaNotification) {
+    public SmsNotificationStrategy() {
         super(new CompositeNotificationValidator(
                 List.of(
                         new CommonNotificationValidator(),
                         new SmsNotificationValidator()
                 )
         ));
-        this.kafkaNotification = kafkaNotification;
     }
 
 
     @Override
     protected void doSend(Notification notification) {
-        /// Simulación de envío
+        Map<String, String> metadata = notification.getMetadata();
+        String phoneNumber = metadata.get(SMS_PHONE);
+        String message = metadata.getOrDefault(MESSAGE, "");
+        String provider = metadata.getOrDefault(SMS_PROVIDER, "DEFAULT");
+        String apiKey = metadata.getOrDefault(SMS_API_KEY, "DEFAULT");
+
+        // Simulación realista de envío
         log.info(
-                "[SMS] Sending phone number to={} | message={} | metadata={}",
-                notification.getRecipient(),
-                notification.getMetadata().getOrDefault("message", ""),
-                notification.getMetadata()
+                "[SMS][PROVIDER={}] Sending SMS -> phone={} | message={}",
+                provider,
+                phoneNumber,
+                message
         );
-        /// Envio a Kafka/ pubSub
-        kafkaNotification.pushNotification(notification);
     }
+
 }
