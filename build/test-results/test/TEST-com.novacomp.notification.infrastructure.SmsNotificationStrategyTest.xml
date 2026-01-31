@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.novacomp.notification.infrastructure.SmsNotificationStrategyTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-01-31T13:49:54" hostname="ANGEL" time="0.012">
+  <properties/>
+  <testcase name="shouldFailWhenCreatedAtIsNull()" classname="com.novacomp.notification.infrastructure.SmsNotificationStrategyTest" time="0.003"/>
+  <testcase name="shouldFailWhenRecipientIsMissing()" classname="com.novacomp.notification.infrastructure.SmsNotificationStrategyTest" time="0.003"/>
+  <testcase name="shouldSendSmsWhenNotificationIsValid()" classname="com.novacomp.notification.infrastructure.SmsNotificationStrategyTest" time="0.005"/>
+  <system-out><![CDATA[10:49:54.691 [Test worker] ERROR com.novacomp.notification.domain.validation.CommonNotificationValidator -- createdAt is required
+10:49:54.691 [Test worker] ERROR com.novacomp.notification.domain.validation.CommonNotificationValidator -- Recipient is required
+10:49:54.707 [Test worker] INFO com.novacomp.notification.infrastructure.adapter.out.strategy.SmsNotificationStrategy -- [SMS][PROVIDER=DEFAULT] Sending SMS -> phone=null | message=Hola SMS
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

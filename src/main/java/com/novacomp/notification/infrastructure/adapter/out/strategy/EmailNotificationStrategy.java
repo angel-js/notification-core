@@ -6,38 +6,46 @@ import com.novacomp.notification.domain.validation.AbstractNotificationStrategy;
 import com.novacomp.notification.domain.validation.CommonNotificationValidator;
 import com.novacomp.notification.domain.validation.CompositeNotificationValidator;
 import com.novacomp.notification.domain.validation.strategy.EmailNotificationValidator;
-import com.novacomp.notification.infrastructure.adapter.out.KafkaNotification;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
+import java.util.Map;
+
+import static com.novacomp.notification.domain.model.NotificationMetadata.EMAIL_SUBJECT;
+import static com.novacomp.notification.domain.model.NotificationMetadata.MESSAGE;
+import static com.novacomp.notification.domain.model.ProviderMetadata.EMAIL_API_KEY;
+import static com.novacomp.notification.domain.model.ProviderMetadata.EMAIL_PROVIDER;
 
 @Slf4j
 public class EmailNotificationStrategy extends AbstractNotificationStrategy {
 
-    private final KafkaNotification kafkaNotification;
-
-    public EmailNotificationStrategy(KafkaNotification kafkaNotification) {
+    public EmailNotificationStrategy() {
         super(new CompositeNotificationValidator(
                 List.of(
                         new CommonNotificationValidator(),
                         new EmailNotificationValidator()
                 )
         ));
-        this.kafkaNotification = kafkaNotification;
     }
 
     @Override
-    public void doSend(Notification notification) {
+    protected void doSend(Notification notification) {
+        String to = notification.getRecipient();
+        Map<String, String> metadata = notification.getMetadata();
+        String subject = metadata.getOrDefault(EMAIL_SUBJECT, "No Subject");
+        String message = metadata.getOrDefault(MESSAGE, "");
+        String provider = metadata.getOrDefault(EMAIL_PROVIDER, "DEFAULT");
+        String apiKey = metadata.getOrDefault(EMAIL_API_KEY, "DEFAULT");
 
-        /// Simulación de envío
+        // Simulación realista de envío
         log.info(
-                "[EMAIL] Sending email to={} | message={} | metadata={}",
-                notification.getRecipient(),
-                notification.getMetadata().getOrDefault("message", ""),
-                notification.getMetadata()
+                "[EMAIL][PROVIDER={}] Sending email -> to={} | subject={} | body={} ",
+                provider,
+                to,
+                subject,
+                message
         );
-        /// Envio a Kafka/ pubSub
-        kafkaNotification.pushNotification(notification);
     }
+
 }
 

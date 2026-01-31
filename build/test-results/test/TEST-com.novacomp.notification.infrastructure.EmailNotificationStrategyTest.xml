@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.novacomp.notification.infrastructure.EmailNotificationStrategyTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-01-31T13:49:54" hostname="ANGEL" time="0.012">
+  <properties/>
+  <testcase name="shouldFailWhenEmailIsInvalid()" classname="com.novacomp.notification.infrastructure.EmailNotificationStrategyTest" time="0.003"/>
+  <testcase name="shouldSendEmailWhenNotificationIsValid()" classname="com.novacomp.notification.infrastructure.EmailNotificationStrategyTest" time="0.003"/>
+  <testcase name="shouldFailWhenContentIsNull()" classname="com.novacomp.notification.infrastructure.EmailNotificationStrategyTest" time="0.002"/>
+  <testcase name="shouldFailWhenRecipientIsMissing()" classname="com.novacomp.notification.infrastructure.EmailNotificationStrategyTest" time="0.002"/>
+  <system-out><![CDATA[10:49:54.468 [Test worker] INFO com.novacomp.notification.infrastructure.adapter.out.strategy.EmailNotificationStrategy -- [EMAIL][PROVIDER=DEFAULT] Sending email -> to=user@test.com | subject=No Subject | body=Hola 
+10:49:54.468 [Test worker] ERROR com.novacomp.notification.domain.validation.CommonNotificationValidator -- Content cant not be null
+10:49:54.479 [Test worker] ERROR com.novacomp.notification.domain.validation.CommonNotificationValidator -- Recipient is required
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

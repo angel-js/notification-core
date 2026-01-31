@@ -3,7 +3,7 @@ package com.novacomp.notification.domain.validation.strategy;
 import com.novacomp.notification.domain.model.Notification;
 import com.novacomp.notification.domain.validation.NotificationValidator;
 
-import static com.novacomp.notification.infrastructure.utils.Constants.INVALID_EMAIL;
+import static com.novacomp.notification.infrastructure.utils.Constants.ID;
 import static com.novacomp.notification.infrastructure.utils.Constants.INVALID_ID;
 
 public class SlackNotificationValidator implements NotificationValidator {
@@ -12,7 +12,7 @@ public class SlackNotificationValidator implements NotificationValidator {
 
         String recipient = notification.getRecipient();
 
-        if (!recipient.contains("id")) {
+        if (!recipient.contains(ID)) {
             throw new IllegalArgumentException(
                     INVALID_ID + recipient
             );

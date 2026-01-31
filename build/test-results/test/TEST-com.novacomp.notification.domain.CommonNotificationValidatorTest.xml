@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.novacomp.notification.domain.CommonNotificationValidatorTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-01-31T13:49:54" hostname="ANGEL" time="0.022">
+  <properties/>
+  <testcase name="shouldThrowWhenContentIsNull()" classname="com.novacomp.notification.domain.CommonNotificationValidatorTest" time="0.002"/>
+  <testcase name="shouldThrowWhenRecipientIsNull()" classname="com.novacomp.notification.domain.CommonNotificationValidatorTest" time="0.002"/>
+  <testcase name="shouldThrowWhenChannelsAreEmpty()" classname="com.novacomp.notification.domain.CommonNotificationValidatorTest" time="0.001"/>
+  <testcase name="shouldPassValidationForValidNotification()" classname="com.novacomp.notification.domain.CommonNotificationValidatorTest" time="0.002"/>
+  <testcase name="shouldThrowWhenCreatedAtIsNull()" classname="com.novacomp.notification.domain.CommonNotificationValidatorTest" time="0.003"/>
+  <testcase name="shouldThrowWhenChannelsAreNull()" classname="com.novacomp.notification.domain.CommonNotificationValidatorTest" time="0.002"/>
+  <testcase name="shouldThrowWhenRecipientIsBlank()" classname="com.novacomp.notification.domain.CommonNotificationValidatorTest" time="0.001"/>
+  <testcase name="shouldThrowWhenNotificationIsNull()" classname="com.novacomp.notification.domain.CommonNotificationValidatorTest" time="0.001"/>
+  <system-out><![CDATA[10:49:54.008 [Test worker] ERROR com.novacomp.notification.domain.validation.CommonNotificationValidator -- Content cant not be null
+10:49:54.008 [Test worker] ERROR com.novacomp.notification.domain.validation.CommonNotificationValidator -- Recipient is required
+10:49:54.008 [Test worker] ERROR com.novacomp.notification.domain.validation.CommonNotificationValidator -- At least one channel is required
+10:49:54.024 [Test worker] ERROR com.novacomp.notification.domain.validation.CommonNotificationValidator -- createdAt is required
+10:49:54.024 [Test worker] ERROR com.novacomp.notification.domain.validation.CommonNotificationValidator -- At least one channel is required
+10:49:54.024 [Test worker] ERROR com.novacomp.notification.domain.validation.CommonNotificationValidator -- Recipient is required
+10:49:54.024 [Test worker] ERROR com.novacomp.notification.domain.validation.CommonNotificationValidator -- Notification must not be null
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
